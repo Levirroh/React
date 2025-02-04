@@ -1,22 +1,42 @@
 // assim é possível misturar JS com HTML sem necessitar de dois arquivos, unificando-os.
 // Essas funções são o que mostra e cria nas páginas dependendo da função chamada.
-
 import { useState } from "react";
+import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
 
 function App(){
+  const [tasks, setTasks] = useState([ // lista de tarefas
+  {
+    id:1,
+    title: "Estudar programação",
+    description: "Estudar programação até dormir no teclado",
+    isCompleted: false,
+  },
+  {
+    id:2,
+    title: "Fazer compras",
+    description: "Ir no mercado e pagar para poder se alimentar",
+    isCompleted: false,
+  },
+  {
+    id:3,
+    title: "Ler um livro",
+    description: "Ler para se distrair",
+    isCompleted: false,
+  },
 
-  const [message, setMessage] = useState("Olá mundo");
-
+  ])
   //um state é uma variável que se altera no React que faz com que o componente seja renderizado novamente.
   return (
-
     <div>
-      <h1>{message}</h1>
-      <button onClick={() =>{
-        setMessage("Olá, de novo, mundo!");
-      }}>Mudar Mensagem</button>
+      <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
+        <div className="w-[500-px]"> 
+          <h1 className="text-3xl text-slate-100 font-bold text-center">Gerenciador de Tarefas</h1>
+          <AddTask />
+          <Tasks tasks={tasks}/>
+        </div>
+      </div>
     </div>
-    
   )
 
 }
