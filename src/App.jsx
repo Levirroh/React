@@ -44,8 +44,9 @@ function App(){
   }
 
   function addTaskSubmit(title, description){
+    const newId = tasks.length > 0 ? Math.max(...tasks.map(task => task.id)) + 1 : 1; // ele cria um newId, que verifica o tamanho da array do tasks, se for zero a nova tarefa tem id 1, se tiver um id já existente ele verifica o maior número de id presente e soma 1.
     const newTask = {
-      id: tasks.lenght + 2,
+      id: newId,
       title, // como ele é igual ao nome da campo nao precisa dos dois pontos
       description,
       isCompleted: false,
