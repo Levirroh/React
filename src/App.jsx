@@ -37,13 +37,19 @@ function App(){
     });
     setTasks(newTasks);
   }
+
+  function TaskDelete(taskId){
+    const newTasks = tasks.filter(task => task.id !== taskId); 
+    setTasks(newTasks);
+  }
+
   //um state é uma variável que se altera no React que faz com que o componente seja renderizado novamente.
   return (
       <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
         <div className="w-[500-px]"> 
           <h1 className="text-3xl text-slate-100 font-bold text-center">Gerenciador de Tarefas</h1>
           <AddTask />
-          <Tasks tasks={tasks} onTaskClick={onTaskClick}/>
+          <Tasks tasks={tasks} onTaskClick={onTaskClick} TaskDelete={TaskDelete} />
         </div>
       </div>
   )
