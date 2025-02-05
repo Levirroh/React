@@ -28,25 +28,24 @@ function App(){
   ])
 
   function onTaskClick(taskId){
-    const newTasks = tasks.map(task => {
+    const newTasks = tasks.map((task) => {
       //preciso atualizar a tarefa.
       if (task.id == taskId){
-        return {...task, isCompleted: !task.isCompleted}; // volta o contrário, permitindo completar e "descompletar" a tarefa
+        return { ...task, isCompleted: !task.isCompleted}; // volta o contrário, permitindo completar e "descompletar" a tarefa
       }
       return task;
     });
+    setTasks(newTasks);
   }
   //um state é uma variável que se altera no React que faz com que o componente seja renderizado novamente.
   return (
-    <div>
       <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
         <div className="w-[500-px]"> 
           <h1 className="text-3xl text-slate-100 font-bold text-center">Gerenciador de Tarefas</h1>
           <AddTask />
-          <Tasks tasks={tasks}/>
+          <Tasks tasks={tasks} onTaskClick={onTaskClick}/>
         </div>
       </div>
-    </div>
   )
 
 }
