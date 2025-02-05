@@ -43,12 +43,22 @@ function App(){
     setTasks(newTasks);
   }
 
+  function addTaskSubmit(title, description){
+    const newTask = {
+      id: tasks.lenght + 2,
+      title, // como ele é igual ao nome da campo nao precisa dos dois pontos
+      description,
+      isCompleted: false,
+    }
+    setTasks([...tasks, newTask]);
+  }
+
   //um state é uma variável que se altera no React que faz com que o componente seja renderizado novamente.
   return (
       <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
-        <div className="w-[500-px]"> 
+        <div className="w-[500-px] space-y-4"> 
           <h1 className="text-3xl text-slate-100 font-bold text-center">Gerenciador de Tarefas</h1>
-          <AddTask />
+          <AddTask addTaskSubmit={addTaskSubmit}/>
           <Tasks tasks={tasks} onTaskClick={onTaskClick} TaskDelete={TaskDelete} />
         </div>
       </div>
