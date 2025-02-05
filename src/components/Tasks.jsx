@@ -1,14 +1,14 @@
-import { ChevronRightIcon, Trash2, TrashIcon } from "lucide-react";
+import { ChevronRightIcon, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 function Tasks({tasks, onTaskClick, TaskDelete}){
     const navigate = useNavigate();
 
     function onSeeDetailsClick(task){
-        const query = new URLsearchparams();
+        const query = new URLSearchParams();
         query.set("title", task.title);
         query.set("description", task.description);
-        navigate(`/task?title=${task.title}&description=${task.description}`);
+        navigate(`/task?${query.toString()}`);
     }
     return (
         <ul className="space-y-4 p-6 bg-slate-200 rounded-md shadow">
