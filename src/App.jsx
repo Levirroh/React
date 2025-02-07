@@ -16,16 +16,21 @@ function App(){
     // transforma o valor de id, title e description da task para strings e salva no local storage
     }, [tasks]);
   
-  /*
+  /* API para pegar tarefas PLACEHOLDER
     useEffect(() => {
+      
       async function fetchTasks(){
+      
       //chamar API.
+      
       const response = await fetch('https://jsonplaceholder.typecode.com/todos?_limit=10',{method: 'GET'});
-      const data = await response.json(); //converte os dados chamados para json
-
+      
       // pegar dados que ela retorna.
-
+      
+      const data = await response.json(); //converte os dados chamados para json
+      
       // Armazenar os dados dela nos states.
+      
       setTasks(data);
       };
       fetchTasks();
