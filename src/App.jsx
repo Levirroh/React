@@ -14,7 +14,24 @@ function App(){
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
     // transforma o valor de id, title e description da task para strings e salva no local storage
-    }, [tasks])
+    }, [tasks]);
+  
+  /*
+    useEffect(() => {
+      async function fetchTasks(){
+      //chamar API.
+      const response = await fetch('https://jsonplaceholder.typecode.com/todos?_limit=10',{method: 'GET'});
+      const data = await response.json(); //converte os dados chamados para json
+
+      // pegar dados que ela retorna.
+
+      // Armazenar os dados dela nos states.
+      setTasks(data);
+      };
+      fetchTasks();
+      }, []) // somente a primeira vez que o usuário entrar na aplicação isso vai rodar (lista vazia)
+  */
+  
 
   function onTaskClick(taskId){
     const newTasks = tasks.map((task) => {
