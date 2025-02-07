@@ -1,31 +1,20 @@
 // assim é possível misturar JS com HTML sem necessitar de dois arquivos, unificando-os.
 // Essas funções são o que mostra e cria nas páginas dependendo da função chamada.
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 
 function App(){
-  const [tasks, setTasks] = useState([ // lista de tarefas
-  {
-    id:1,
-    title: "Estudar programação",
-    description: "Estudar programação até dormir no teclado",
-    isCompleted: false,
-  },
-  {
-    id:2,
-    title: "Fazer compras",
-    description: "Ir no mercado e pagar para poder se alimentar",
-    isCompleted: false,
-  },
-  {
-    id:3,
-    title: "Ler um livro",
-    description: "Ler para se distrair",
-    isCompleted: false,
-  },
+  const [tasks, setTasks] = useState(// lista de tarefas
+  JSON.parse(localStorage.getItem("tasks")) || []
+  ); // vai pegar todas os itens do local storage e mostrar como tarefas.
 
-  ])
+
+ // vai rodar essa função TODA vez que o item referido (nesse caso o 'tasks') for alterado
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    // transforma o valor de id, title e description da task para strings e salva no local storage
+    }, [tasks])
 
   function onTaskClick(taskId){
     const newTasks = tasks.map((task) => {
